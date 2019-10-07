@@ -16,10 +16,12 @@
 
 # RStudio files
 .Rproj.user/
+*.Rproj
+*.Ruserdata
 
 # produced vignettes
-vignettes/*.html
-vignettes/*.pdf
+Lab6/vignettes/*.html
+Lab6/vignettes/*.pdf
 
 # OAuth2 token, see https://github.com/hadley/httr/releases/tag/v0.3
 .httr-oauth
