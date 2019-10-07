@@ -1,0 +1,15 @@
+Package: Lab6
+Type: Package
+Title: Advanced R Programming - Lab6
+Version: 1.0
+Date: 2019-10-07
+Author: Stylianos Sidiropoulos, Vasileios Karapoulios
+Maintainer: <stysi607@student.liu.se>
+Description: This is a collaborative project for Lab 6 in Advanced R Programming course. Team 16 implemented this project. More information about the lab can be found on the PDF file in LISAM.
+License: GNU General Public License
+VignetteBuilder: knitr
+RoxygenNote: 6.1.1
+LazyData: true
+Encoding: UTF-8
+Suggests: testthat, knitr, rmarkdown, roxygen2
+Imports: methods
