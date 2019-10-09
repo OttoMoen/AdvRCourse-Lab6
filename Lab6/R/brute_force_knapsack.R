@@ -10,16 +10,16 @@ brute_force_knapsack <- function(x, W){
   if(!is.data.frame(x) || !is.numeric(W) || W<=0){
     stop()
   }
-  maxValue<-0
-  best_id<-c()
-  n<-length(x[,1])
+  maxValue <- 0
+  best_id <- c()
+  n <- length(x[,1])
   for(i in 1:(2^n)-1){
-    tempWeight<-0
-    tempValue<-0
-    temp_id<-c()
+    tempWeight <- 0
+    tempValue <- 0
+    temp_id <- c()
     bits <- intToBits(i)
     for(j in 1:length(bits)){
-      if( bits[j] == TRUE ){
+      if(bits[j] == TRUE){
         tempWeight <- tempWeight + x[j,1]
         tempValue <- tempValue + x[j,2]
         temp_id <- c(temp_id,j)
@@ -30,8 +30,8 @@ brute_force_knapsack <- function(x, W){
       best_id <- temp_id
     }
   }
-  lst<-list()
-  lst$value<-round(maxValue)
-  lst$elements<-best_id
+  lst <- list()
+  lst$value <- round(maxValue)
+  lst$elements <- best_id
   return(lst)
 }
