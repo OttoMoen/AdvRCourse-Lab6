@@ -1,3 +1,16 @@
+#' Implementation of the greedy_knapsack function. 
+#' @name greedy_knapsack
+#' @param x A dataframe containing two vectors with the weights (w) and the values (v).
+#' @param W The maximum capacity.
+#' @return A list containing the value and the elements used to fill the knapsack.
+#' @description The following algorithm, finds the best combination of the elements in terms of value-weight.
+#' @references \url{https://en.wikipedia.org/wiki/Knapsack_problem}
+#' @import tictoc
+#' @export greedy_knapsack
+#' @examples
+#' greedy_knapsack(x = knapsack_objects[1:800,], W = 3500)
+#' greedy_knapsack(x = knapsack_objects[1:1200,], W = 2000)
+
 library(tictoc)
 
 set.seed(42)

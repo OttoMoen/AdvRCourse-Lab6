@@ -1,3 +1,18 @@
+#' Implementation of the brute_force_knapsack function. 
+#' @name brute_force_knapsack
+#' @param x A dataframe containing two vectors with the weights (w) and the values (v).
+#' @param W The maximum capacity.
+#' @return A list containing the value and the elements used to fill the knapsack.
+#' @description The following algorithm, finds the best combination of the elements in terms of value-weight.
+#' @references \url{https://en.wikipedia.org/wiki/Knapsack_problem}
+#' @import tictoc
+#' @export brute_force_knapsack
+#' @examples
+#' brute_force_knapsack(x = knapsack_objects[1:8,], W = 3500)
+#' brute_force_knapsack(x = knapsack_objects[1:12,], W = 3500)
+#' brute_force_knapsack(x = knapsack_objects[1:8,], W = 2000)
+#' brute_force_knapsack(x = knapsack_objects[1:12,], W = 2000)
+
 library(tictoc)
 
 set.seed(42)
