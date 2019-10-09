@@ -7,26 +7,31 @@ knapsack_objects <-
   )
 
 brute_force_knapsack <- function(x, W){
-  N<-length(x$w)
-  tempWeight<-0
-  tempValue<-0
-  minWeight<-99999999
+  if(!is.data.frame(x) || !is.numeric(W) || W<=0){
+    stop()
+  }
   maxValue<-0
-  best_i<-c()
-  
-  for(i in 1:N){
-    temp_i<-c()
-    tempWeight<-tempWeight + x$w[i]
-    tempValue<- tempWeight + x$v[i]
-    temp_i<-c(temp_i, i)
-    
-    if(tempWeight <= W && tempValue >= maxValue){
-      best_i<-temp_i
-      if(tempValue > maxValue){
-        maxValue <- tempValue
-
+  best_id<-c()
+  n<-length(x[,1])
+  for(i in 1:(2^n)-1){
+    tempWeight<-0
+    tempValue<-0
+    temp_id<-c()
+    bits <- intToBits(i)
+    for(j in 1:length(bits)){
+      if( bits[j] == TRUE ){
+        tempWeight <- tempWeight + x[j,1]
+        tempValue <- tempValue + x[j,2]
+        temp_id <- c(temp_id,j)
       }
     }
+    if(tempValue > maxValue && tempWeight <= W){
+      maxValue <- tempValue
+      best_id <- temp_id
+    }
   }
-  return(best_i)
+  lst<-list()
+  lst$value<-round(maxValue)
+  lst$elements<-best_id
+  return(lst)
 }
