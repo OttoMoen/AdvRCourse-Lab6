@@ -32,21 +32,25 @@ greedy_knapsack <- function(x, W){
     stop()
   }
   x$ratio <- x$v/x$w
-  sort_by_ratio <- x[order(-x$ratio),]
-  tempWeight <- 0
-  tempValue <- 0
-  temp_id <- c()
+  x <- x[order(-x$ratio),]
+  weight <- 0
+  value <- 0
+  id <- c()
   
-  for(i in 1:length(sort_by_ratio$ratio)){
-    if(tempWeight <= W){
-      tempWeight <- tempWeight + sort_by_ratio$w[i]
-      tempValue <- tempValue + sort_by_ratio$v[i]
-      temp_id <- c(temp_id, row.names(sort_by_ratio[i,]))
+  for(i in 1:length(x$ratio)){
+    if(weight + x$w[i] <= W){
+      weight <- weight + x$w[i]
+      value <- value + x$v[i]
+      id <- c(id, as.numeric(row.names(x[i,])))
+    }
+    else{
+      remain <- W - weight
+      value <- value + x$v[i]*(remain/x$w[i])
     }
   }
   lst <- list()
-  lst$value <- round(tempValue)
-  lst$elements <- temp_id
+  lst$value <- round(value)
+  lst$elements <- id
   #toc()
   return(lst)
 }
