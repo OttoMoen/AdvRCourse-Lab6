@@ -17,7 +17,7 @@
 #' knapsack_dynamic(x = knapsack_objects[1:12,], W = 3500)
 #' knapsack_dynamic(x = knapsack_objects[1:8,], W = 2000)
 
-library(tictoc)
+#library(tictoc)
 
 set.seed(42)
 n <- 2000
@@ -28,7 +28,7 @@ knapsack_objects <-
   )
 
 knapsack_dynamic <- function(x, W){
-  tic()
+  #tic()
   n <- length(x[,1])
   m<-matrix(0, nrow=n,ncol=W)
   for(i in 2:n){
@@ -56,6 +56,6 @@ knapsack_dynamic <- function(x, W){
   lst <- list()
   lst$value <- round(m[n,W])
   lst$elements <- elements
-  toc()
+  #toc()
   return(lst)
 }

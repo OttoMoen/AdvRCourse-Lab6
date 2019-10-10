@@ -18,7 +18,7 @@
 #' brute_force_knapsack(x = knapsack_objects[1:8,], W = 2000)
 #' brute_force_knapsack(x = knapsack_objects[1:12,], W = 2000)
 
-library(tictoc)
+#library(tictoc)
 
 set.seed(42)
 n <- 2000
@@ -29,7 +29,7 @@ knapsack_objects <-
   )
 
 brute_force_knapsack <- function(x, W){
-  tic()
+  #tic()
   if(!is.data.frame(x) || !is.numeric(W) || W<=0){
     stop()
   }
@@ -56,6 +56,6 @@ brute_force_knapsack <- function(x, W){
   lst <- list()
   lst$value <- round(maxValue)
   lst$elements <- best_id
-  toc()
+  #toc()
   return(lst)
 }
