@@ -15,6 +15,11 @@ A list containing the value and the elements used to fill the knapsack.
 The following algorithm, finds the best combination of the elements in terms of value-weight.
 }
 \examples{
+set.seed(42)
+n <- 2000
+w=sample(1:4000, size = n, replace = TRUE)
+v=runif(n = n, 0, 10000)
+knapsack_objects <- data.frame(w,v)
 greedy_knapsack(x = knapsack_objects[1:800,], W = 3500)
 greedy_knapsack(x = knapsack_objects[1:1200,], W = 2000)
 }

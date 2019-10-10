@@ -38,4 +38,3 @@ Maintainer: \packageMaintainer{Lab6}
  greedy_knapsack(x = knapsack_objects[1:800,], W = 3500)
  knapsack_dynamic(x = knapsack_objects[1:8,], W = 3500)
 }
-}
