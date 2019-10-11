@@ -17,7 +17,7 @@
 #' greedy_knapsack(x = knapsack_objects[1:1200,], W = 2000)
 
 #library(tictoc)
-RNGkind(sample.kind = "Rounding")
+
 set.seed(42)
 n <- 2000
 knapsack_objects <-
@@ -38,10 +38,14 @@ greedy_knapsack <- function(x, W){
   id <- c()
   
   for(i in 1:length(x$ratio)){
+    
     if(weight + x$w[i] <= W){
+      print(x$w[i])
+      print(weight)
       weight <- weight + x$w[i]
       value <- value + x$v[i]
       id <- c(id, as.numeric(row.names(x[i,])))
+      
     }
   }
   lst <- list()
