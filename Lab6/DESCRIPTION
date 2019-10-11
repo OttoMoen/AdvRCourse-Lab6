@@ -12,4 +12,4 @@ RoxygenNote: 6.1.1
 LazyData: true
 Encoding: UTF-8
 Suggests: testthat, knitr, rmarkdown, roxygen2
-Imports: methods, lineprof, parallel
+Imports: methods, parallel

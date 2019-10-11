@@ -1,6 +1,6 @@
 language: r
 cache: packages
 install:
-  - Rscript -e 'install.packages(c("devtools","roxygen2","testthat","knitr","rmarkdown","lineprof", "parallel"));devtools::install_deps("Lab6")'
+  - Rscript -e 'install.packages(c("devtools","roxygen2","testthat","knitr","rmarkdown", "parallel"));devtools::install_deps("Lab6")'
 script:
   - Rscript -e 'devtools::check("Lab6")'
