@@ -11,12 +11,21 @@ vignette: >
 knitr::opts_chunk$set(echo = TRUE, collapse = TRUE, eval = TRUE, comment = "#>")
 ```
 
-This is the Lab 6 report regarding the Knapsack problem. We have implemented three different approaches for this problem: the brute force search, dynamic and greedy heuristic methods. The vignette includes the results of these approaches, as well as answering questions about how much time it takes for each algorithm to run for *n* objects.
+**Collaborative project for Lab 5 in Advanced R Programming course (Stastistics &amp; Machine Learning MSc - LiU)**
 
-```{r }
+This is the Lab 6 report regarding the Knapsack problem. We have implemented three different approaches for this problem: the brute force search, dynamic and greedy heuristic methods. The vignette includes the examples and results of these approaches, as well as answering questions about time and performance of the algorithms.
+
+**Group 16:**
+
+* Vasileios Karapoulios - vaska579
+
+* Stylianos Sidiropoulos - stysi607
+
+
+```{r initial_setup}
 # Import libraries
 library(Lab6)
-library(lineprof)
+library(parallel)
 
 #Set knapsack dataset
 set.seed(42)
@@ -30,36 +39,91 @@ knapsack_objects <-
 
 ## Brute Force Search
 
-This is the Brute Force approach to the Knapsack problem through some examples:
+Below there are some examples for the Brute Force approach to the Knapsack problem:
 
-```{r }
+```{r brute_example_1}
 brute_force_knapsack(x = knapsack_objects[1:8,], W = 3500)
 ```
-```{r }
-brute_force_knapsack(x = knapsack_objects[1:12,], W = 3500)
-```
-```{r }
-brute_force_knapsack(x = knapsack_objects[1:8,], W = 2000)
-```
-```{r }
+```{r brute_example 2}
 brute_force_knapsack(x = knapsack_objects[1:12,], W = 2000)
 ```
 
-**Question: ** How much time does it takes to run the algorithm for *n* = 16 objects?
+**Question: ** How much time does it take to run the algorithm for `n = 16` objects?
 
 **Answer: ** 
 
+For `W = 2000`:
 
+```{r brute_answer}
+system.time(brute_force_knapsack(x = knapsack_objects[1:16,], W = 2000))
+```
 
+## Dynamic programming
 
+Below there are some examples for the Dynamic approach to the Knapsack problem:
 
+```{r dynamic_example_1}
+knapsack_dynamic(x = knapsack_objects[1:8,], W = 3500)
+```
 
+```{r dynamic_example_2}
+knapsack_dynamic(x = knapsack_objects[1:12,], W = 2000)
+```
 
+**Question: ** How much time does it take to run the algorithm for `n = 500` objects?
 
+**Answer: ** 
 
+For `W = 2000`:
 
+```{r dynamic_answer}
+system.time(knapsack_dynamic(x = knapsack_objects[1:500,], W = 2000))
+```
 
+## Greedy heuristic
 
+Below there are some examples for the Dynamic approach to the Knapsack problem:
+
+```{r greedy_example_1}
+greedy_knapsack(x = knapsack_objects[1:800,], W = 3500)
+```
+```{r greedy_example_2}
+greedy_knapsack(x = knapsack_objects[1:1200,], W = 2000)
+```
+
+**Question: ** How much time does it take to run the algorithm for `n = 1000000` objects?
+
+**Answer: ** 
+
+For `W = 2000`:
+
+```{r greedy_answer}
+system.time(greedy_knapsack(x = knapsack_objects[1:1000000,], W = 2000))
+```
+
+## Profile and Optimize code
+
+**Question: ** What performance gain could you get by trying to improving your code?
+
+**Answer: ** 
+
+##  Parallelize brute force search
+
+Brute Force Knapsack with Parallelization:
+
+```{r eval=FALSE}
+system.time(brute_force_knapsack(x = knapsack_objects[1:10,], W = 3500, parallel = TRUE))
+```
+
+Brute Force Knapsack without Parallization:
+
+```{r eval=FALSE}
+system.time(brute_force_knapsack(x = knapsack_objects[1:10,], W = 3500, parallel = FALSE))
+```
+
+**Question: ** What performance gain could you get by parallelizing brute force search?
+
+**Answer: ** 
 
 
 

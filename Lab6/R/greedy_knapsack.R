@@ -16,8 +16,6 @@
 #' greedy_knapsack(x = knapsack_objects[1:800,], W = 3500)
 #' greedy_knapsack(x = knapsack_objects[1:1200,], W = 2000)
 
-#library(tictoc)
-
 set.seed(42)
 n <- 2000
 knapsack_objects <-
@@ -27,7 +25,6 @@ knapsack_objects <-
   )
 
 greedy_knapsack <- function(x, W){
-  #tic()
   if(!is.data.frame(x) || !is.numeric(W) || W<=0){
     stop()
   }
@@ -48,6 +45,5 @@ greedy_knapsack <- function(x, W){
   lst <- list()
   lst$value <- round(value)
   lst$elements <- id
-  #toc()
   return(lst)
 }

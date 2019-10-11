@@ -18,7 +18,6 @@
 #' brute_force_knapsack(x = knapsack_objects[1:8,], W = 2000)
 #' brute_force_knapsack(x = knapsack_objects[1:12,], W = 2000)
 
-#library(tictoc)
 library(parallel)
 
 RNGkind(sample.kind = "Rounding")
@@ -31,7 +30,6 @@ knapsack_objects <-
   )
 
 brute_force_knapsack <- function(x, W, parallel=FALSE){
-  #tic()
   if(!is.data.frame(x) || !is.numeric(W) || W<=0){
     stop()
   }
@@ -90,7 +88,6 @@ brute_force_knapsack <- function(x, W, parallel=FALSE){
     lst <- list()
     lst$value <- round(maxValue)
     lst$elements <- best_id
-    #toc()
     return(lst)
   }
 }
