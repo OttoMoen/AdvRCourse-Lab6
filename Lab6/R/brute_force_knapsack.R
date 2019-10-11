@@ -19,7 +19,9 @@
 #' brute_force_knapsack(x = knapsack_objects[1:12,], W = 2000)
 
 #library(tictoc)
+library(parallel)
 
+RNGkind(sample.kind = "Rounding")
 set.seed(42)
 n <- 2000
 knapsack_objects <-
@@ -28,34 +30,67 @@ knapsack_objects <-
     v=runif(n = n, 0, 10000)
   )
 
-brute_force_knapsack <- function(x, W){
+brute_force_knapsack <- function(x, W, parallel=FALSE){
   #tic()
   if(!is.data.frame(x) || !is.numeric(W) || W<=0){
     stop()
   }
-  maxValue <- 0
-  best_id <- c()
-  n <- length(x[,1])
-  for(i in 1:(2^n)-1){
-    tempWeight <- 0
-    tempValue <- 0
-    temp_id <- c()
-    bits <- intToBits(i)
-    for(j in 1:length(bits)){
-      if(bits[j] == TRUE){
-        tempWeight <- tempWeight + x[j,1]
-        tempValue <- tempValue + x[j,2]
-        temp_id <- c(temp_id,j)
+  if(parallel==TRUE){
+    no_cores <- detectCores()
+    clusters <- makeCluster(no_cores)
+    maxValue <<- 0
+    best_id <<- c()
+    lst <<- list()
+    clusterExport(clusters, varlist=c("maxValue", "best_id", "lst"))
+    lstlst<-parSapply(clusters, 1:2^(length(x[,1]))-1, function(i){
+      tempWeight <- 0
+      tempValue <- 0
+      temp_id <- c()
+      bits <- intToBits(i)
+      for(j in 1:length(bits)){
+        if(bits[j] == TRUE){
+          tempWeight <- tempWeight + x[j,1]
+          tempValue <- tempValue + x[j,2]
+          temp_id <- c(temp_id,j)
+        }
+      }
+      if(tempValue > maxValue && tempWeight <= W){
+        maxValue <- tempValue
+        best_id <- temp_id
+      }
+      lst <- list()
+      lst$value <- round(maxValue)
+      lst$elements <- best_id
+      return(lst)  
+    })
+    stopCluster(clusters)
+    temp <- sapply(lstlst, function(x) which.max(sapply(lstlst, `[[`, "value")))
+    return(list(value=lstlst[[temp[1]]]$value, elements=lstlst[[temp[1]]]$elements))
+  }else{
+    maxValue <- 0
+    best_id <- c()
+    n <- length(x[,1])
+    for(i in 1:(2^n)-1){
+      tempWeight <- 0
+      tempValue <- 0
+      temp_id <- c()
+      bits <- intToBits(i)
+      for(j in 1:length(bits)){
+        if(bits[j] == TRUE){
+          tempWeight <- tempWeight + x[j,1]
+          tempValue <- tempValue + x[j,2]
+          temp_id <- c(temp_id,j)
+        }
+      }
+      if(tempValue > maxValue && tempWeight <= W){
+        maxValue <- tempValue
+        best_id <- temp_id
       }
     }
-    if(tempValue > maxValue && tempWeight <= W){
-      maxValue <- tempValue
-      best_id <- temp_id
-    }
+    lst <- list()
+    lst$value <- round(maxValue)
+    lst$elements <- best_id
+    #toc()
+    return(lst)
   }
-  lst <- list()
-  lst$value <- round(maxValue)
-  lst$elements <- best_id
-  #toc()
-  return(lst)
 }
