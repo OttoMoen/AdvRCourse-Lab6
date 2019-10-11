@@ -17,7 +17,7 @@
 #' greedy_knapsack(x = knapsack_objects[1:1200,], W = 2000)
 
 #library(tictoc)
-
+RNGkind(sample.kind = "Rounding")
 set.seed(42)
 n <- 2000
 knapsack_objects <-
@@ -43,13 +43,9 @@ greedy_knapsack <- function(x, W){
       value <- value + x$v[i]
       id <- c(id, as.numeric(row.names(x[i,])))
     }
-    else{
-      remain <- W - weight
-      value <- value + x$v[i]*(remain/x$w[i])
-    }
   }
   lst <- list()
-  lst$value <- round(value)
+  lst$value <- value
   lst$elements <- id
   #toc()
   return(lst)
