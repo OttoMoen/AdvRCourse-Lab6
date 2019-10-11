@@ -7,13 +7,61 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
-)
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE, collapse = TRUE, eval = TRUE, comment = "#>")
 ```
 
-```{r setup}
-# This is a test comment line
+This is the Lab 6 report regarding the Knapsack problem. We have implemented three different approaches for this problem: the brute force search, dynamic and greedy heuristic methods. The vignette includes the results of these approaches, as well as answering questions about how much time it takes for each algorithm to run for *n* objects.
+
+```{r }
+# Import libraries
+library(Lab6)
+library(lineprof)
+
+#Set knapsack dataset
+set.seed(42)
+n <- 2000
+knapsack_objects <-
+  data.frame(
+    w=sample(1:4000, size = n, replace = TRUE),
+    v=runif(n = n, 0, 10000)
+  )
 ```
+
+## Brute Force Search
+
+This is the Brute Force approach to the Knapsack problem through some examples:
+
+```{r }
+brute_force_knapsack(x = knapsack_objects[1:8,], W = 3500)
+```
+```{r }
+brute_force_knapsack(x = knapsack_objects[1:12,], W = 3500)
+```
+```{r }
+brute_force_knapsack(x = knapsack_objects[1:8,], W = 2000)
+```
+```{r }
+brute_force_knapsack(x = knapsack_objects[1:12,], W = 2000)
+```
+
+**Question: ** How much time does it takes to run the algorithm for *n* = 16 objects?
+
+**Answer: ** 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
