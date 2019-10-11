@@ -18,7 +18,6 @@
 
 #library(tictoc)
 
-#RNGkind(sample.kind = "Rounding")
 set.seed(42)
 n <- 2000
 knapsack_objects <-
@@ -47,7 +46,7 @@ greedy_knapsack <- function(x, W){
     }
   }
   lst <- list()
-  lst$value <- value
+  lst$value <- round(value)
   lst$elements <- id
   #toc()
   return(lst)
