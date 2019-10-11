@@ -1,7 +1,7 @@
 # AdvRCourse-Lab6
 [![Build Status](https://travis-ci.org/steliossid/AdvRCourse-Lab6.svg?branch=master)](https://travis-ci.org/steliossid/AdvRCourse-Lab6)
 
-**Collaborative project for Lab 5 in Advanced R Programming course (Stastistics &amp; Machine Learning MSc - LiU)**
+**Collaborative project for Lab 6 in Advanced R Programming course (Stastistics &amp; Machine Learning MSc - LiU)**
 
 This R package solves the Knapsack problem. It is implemented in three different approaches: the brute force, dynamic and greedy heuristic methods. The brute force algorithm can be paralellized, for better code performance.
 
