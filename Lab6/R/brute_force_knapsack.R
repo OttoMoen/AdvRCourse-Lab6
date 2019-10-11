@@ -6,6 +6,7 @@
 #' @description The following algorithm, finds the best combination of the elements in terms of value-weight.
 #' @references \url{https://en.wikipedia.org/wiki/Knapsack_problem}
 #' @export brute_force_knapsack
+#' @import parallel
 #' @examples
 #' #' set.seed(42)
 #' n <- 2000

@@ -5,7 +5,6 @@
 #' @return A list containing the value and the elements used to fill the knapsack.
 #' @description The following algorithm, finds the best combination of the elements in terms of value-weight.
 #' @references \url{https://en.wikipedia.org/wiki/Knapsack_problem}
-#' @import tictoc
 #' @export knapsack_dynamic
 #' @examples
 #' #' set.seed(42)
