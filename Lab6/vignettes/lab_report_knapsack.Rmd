@@ -105,7 +105,7 @@ system.time(greedy_knapsack(x = knapsack_objects[1:1000000,], W = 2000))
 
 **Question: ** What performance gain could you get by trying to improving your code?
 
-**Answer: ** 
+**Answer: ** Profiling and optimizing the code, we can identify and fix bottlenecks.  We can identify the causes that make the code slow and consuming system resources. The main performance gain we get by optimizing the code is that it takes less time to excecute the program and produce results with the least usage of system resources.
 
 ##  Parallelize brute force search
 
@@ -123,9 +123,4 @@ system.time(brute_force_knapsack(x = knapsack_objects[1:10,], W = 3500, parallel
 
 **Question: ** What performance gain could you get by parallelizing brute force search?
 
-**Answer: ** 
-
-
-
-
-
+**Answer: ** Parallelization is one of the solutions for the code to run faster. The performance gain we get by parallelizing the code is again the improvement of the execution time of the code. This performance gain is achieved by running the program in multiple processors of our system simultaneously.
